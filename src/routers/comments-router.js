@@ -7,4 +7,19 @@ const getPostComments = (req, res) => {
     res.json(postComments);
 };
 
+
+const postComment = (req, res) =>{
+    const comment = req.body;
+    let postComments = comments[comment.postId];
+
+    if (!postComments) {
+        postComments = [];
+        comments[comment.postId] = postComments;
+    }
+    postComments.push(comment);
+    res.end();
+
+}
+
 exports.getPostComments = getPostComments;
+exports.postComment = postComment;

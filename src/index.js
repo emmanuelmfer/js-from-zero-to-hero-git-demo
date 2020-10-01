@@ -1,6 +1,7 @@
 const express = require('express');
+
 const { getPosts, postPost } = require('./routers/posts-router');
-const { getPostComments } = require('./routers/comments-router');
+const { getPostComments, postComment } = require('./routers/comments-router');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get('/', (req, res) => {
 app.get('/posts', getPosts);
 app.post('/posts', postPost);
 app.get('/posts/:postId/comments', getPostComments);
+app.post('/comments', postComment);
 
 app.listen(3000, () => {
     console.log(`Express is up and running`);
